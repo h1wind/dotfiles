@@ -15,6 +15,7 @@ set hidden
 set backspace=2
 set cul
 set rnu
+set nu
 set autoread
 set completeopt=preview,menu
 set nobackup
@@ -22,7 +23,7 @@ set nowritebackup
 set indentexpr=
 set ruler
 set noeb
-set cino=>4:0l1g0t0(0
+set cino=:0l1g0t0(0
 set noswapfile
 set hlsearch
 set incsearch
@@ -31,10 +32,13 @@ set matchtime=1
 set pumheight=20
 set pumwidth=20
 set updatetime=300
+set ignorecase
 
-autocmd FileType c,cpp,cmake,java,python,shell setlocal et ts=4 st=4 sw=4
-autocmd FileType json,yaml,js,html setlocal et ts=2 st=2 sw=2
+autocmd FileType c,cpp,cmake,java,python setlocal et ts=4 st=4 sw=4
+autocmd FileType shell,vim,json,yaml,js,html setlocal et ts=2 st=2 sw=2
 autocmd FileType go setlocal ts=4 st=4 sw=4
+
+autocmd InsertLeave *.go,*.sh,*.py,*.c,*.cpp,*.cmake write
 
 let g:mapleader=","
 
@@ -43,21 +47,53 @@ Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'preservim/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'h1zzz/what.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
+Plug 'jackguo380/vim-lsp-cxx-highlight'
+Plug 'vim-python/python-syntax'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 colorscheme what
+
+let g:go_fmt_autosave=0
+let g:go_fmt_fail_silently=0
+let g:go_imports_autosave=0
+let g:go_mod_fmt_autosave=0
+let g:go_doc_keywordprg_enabled=0
+let g:go_def_mapping_enabled=0
+let g:go_search_bin_path_first=0
+let g:go_textobj_enabled=0
+let g:go_textobj_include_variable=0
+let g:go_gopls_enabled=0
+let g:go_template_autocreate=0
+
+let g:go_highlight_types=1
+let g:go_highlight_fields=1
+let g:go_highlight_functions=1
+let g:go_highlight_function_calls=1
+let g:go_highlight_operators=1
+let g:go_highlight_extra_types=1
+let g:go_highlight_methods=1
+let g:go_highlight_generate_tags=1
+
+let g:python_highlight_all=1
 
 let g:NERDTreeWinSize=40
 let g:NERDSpaceDelims=1
 let g:NERDAltDelims_python=1
 
-let g:coc_global_extensions=['coc-clangd', 'coc-cmake', 'coc-go', 'coc-json', 'coc-pyright', 'coc-sh']
+let g:coc_global_extensions=['coc-clangd', 'coc-go', 'coc-cmake', 'coc-json', 'coc-pyright', 'coc-sh']
 
 map <F1> <NOP>
 
+vmap ; :
+
 nmap <F2> :NERDTreeToggle<CR>
 nmap <F3> :TagbarToggle<CR>
+nmap ; :
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -77,4 +113,6 @@ endfunction
 command! -nargs=0 Format :call CocAction('format')
 
 call coc#config('diagnostic.enable', v:false)
+call coc#config('clangd.semanticHighlighting', v:true)
+call coc#config('coc.preferences.semanticTokensHighlights', v:false)
 
