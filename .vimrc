@@ -33,6 +33,7 @@ set pumheight=20
 set pumwidth=20
 set updatetime=300
 set ignorecase
+set endofline
 
 autocmd FileType c,cpp,cmake,java,python setlocal et ts=4 st=4 sw=4
 autocmd FileType shell,vim,json,yaml,js,html setlocal et ts=2 st=2 sw=2
@@ -55,6 +56,13 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'vim-python/python-syntax'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
+
+augroup nerdtreehidepath
+  autocmd!
+  autocmd FileType nerdtree setlocal conceallevel=3
+        \ | syntax match NERDTreeHidePath #^[</].*$# conceal
+        \ | setlocal concealcursor=nvi
+augroup end
 
 colorscheme what
 
@@ -83,13 +91,16 @@ let g:python_highlight_all=1
 
 let g:NERDTreeWinSize=40
 let g:NERDSpaceDelims=1
+let g:NERDTreeMinimalUI=1
 let g:NERDAltDelims_python=1
+let g:NERDTreeStatusline=-1
+let g:NERDTreeShowHidden=1
+let NERDTreeShowHidden=1
 
 let g:coc_global_extensions=['coc-clangd', 'coc-go', 'coc-cmake', 'coc-json', 'coc-pyright', 'coc-sh']
 
-map <F1> <NOP>
-
-vmap ; :
+nmap <F1> <ESC>
+imap <F1> <ESC>
 
 nmap <F2> :NERDTreeToggle<CR>
 nmap <F3> :TagbarToggle<CR>
