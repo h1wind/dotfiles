@@ -6,6 +6,7 @@ filetype on
 filetype plugin on
 filetype indent on
 
+set fileformat=unix
 set nocompatible
 set syntax=on
 set t_Co=256
