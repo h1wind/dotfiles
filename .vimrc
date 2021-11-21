@@ -52,7 +52,6 @@ Plug 'h1zzz/what.vim'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug'] }
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'vim-python/python-syntax'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -92,11 +91,11 @@ let g:python_highlight_all=1
 
 let g:NERDTreeWinSize=40
 let g:NERDSpaceDelims=1
-let g:NERDTreeMinimalUI=1
+let g:NERDTreeMinimalMenu=1
+" let g:NERDTreeMinimalUI=1
 let g:NERDAltDelims_python=1
 let g:NERDTreeStatusline=-1
 let g:NERDTreeShowHidden=1
-let NERDTreeShowHidden=1
 
 let g:coc_global_extensions=['coc-clangd', 'coc-go', 'coc-cmake', 'coc-json', 'coc-pyright', 'coc-sh']
 
