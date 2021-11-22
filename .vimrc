@@ -55,6 +55,8 @@ Plug 'plasticboy/vim-markdown'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'vim-python/python-syntax'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'kien/ctrlp.vim'
+Plug 'preservim/tagbar'
 call plug#end()
 
 augroup nerdtreehidepath
