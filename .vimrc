@@ -50,7 +50,6 @@ Plug 'preservim/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
 Plug 'h1zzz/what.vim'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'vim-python/python-syntax'
@@ -90,6 +89,13 @@ let g:go_highlight_methods=1
 let g:go_highlight_generate_tags=1
 
 let g:python_highlight_all=1
+
+let g:tagbar_width=40
+
+" let g:NERDCompactSexyComs=1
+let g:NERDDefaultAlign='left'
+let g:NERDCommentEmptyLines=1
+let g:NERDTrimTrailingWhitespace=1
 
 let g:NERDTreeWinSize=40
 let g:NERDSpaceDelims=1
@@ -138,4 +144,5 @@ command! -nargs=0 Format :call CocAction('format')
 call coc#config('diagnostic.enable', v:false)
 call coc#config('clangd.semanticHighlighting', v:true)
 call coc#config('coc.preferences.semanticTokensHighlights', v:false)
+call coc#config('coc.source.file.triggerCharacters', [ "/" ])
 
