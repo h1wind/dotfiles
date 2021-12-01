@@ -48,14 +48,13 @@ call plug#begin('~/.vim/plugged')
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'preservim/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
-Plug 'h1zzz/what.vim'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'plasticboy/vim-markdown'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'vim-python/python-syntax'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'preservim/tagbar'
+Plug 'h1zzz/what.vim'
 call plug#end()
 
 augroup nerdtreehidepath
