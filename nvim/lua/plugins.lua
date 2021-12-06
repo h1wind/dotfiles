@@ -141,9 +141,9 @@ return require("packer").startup(function(use)
       local opts = {noremap = true, silent = true}
 
       lsp.clangd.setup({}) -- brew install clangd
-      lsp.gopls.setup({})  -- go install golang.org/x/tools/gopls@latest
-      lsp.cmake.setup({})  -- pip install cmake-language-server
-      lsp.pylsp.setup({})  -- pip install python-lsp-server autopep8
+      lsp.gopls.setup({})  -- brew install gopls
+      lsp.cmake.setup({})  -- pip3 install cmake-language-server
+      lsp.pylsp.setup({})  -- pip3 install python-lsp-server autopep8
       lsp.bashls.setup({}) -- npm i -g bash-language-server
 
       vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
