@@ -40,6 +40,14 @@ vim.cmd("autocmd FileType lua,shell,vim,json,yaml,js,html setlocal et ts=2 sw=2"
 vim.cmd("autocmd FileType go setlocal ts=4 sw=4")
 vim.cmd("autocmd BufNewFile,BufRead *.h set filetype=c")
 
+vim.cmd([[
+augroup neovim_terminal
+    autocmd!
+    autocmd TermOpen * startinsert
+    autocmd TermOpen * :set nonumber norelativenumber
+augroup END
+]])
+
 vim.api.nvim_set_keymap("n", ";", ":", {})
 vim.api.nvim_set_keymap("n", "<F1>", "<ESC>", {})
 vim.api.nvim_set_keymap("i", "<F1>", "<ESC>", {})
