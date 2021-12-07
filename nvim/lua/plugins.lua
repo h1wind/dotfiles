@@ -46,7 +46,7 @@ vim.cmd([[
   augroup end
 ]])
 
-local install_path = vim.fn.stdpath("data").."/site/pack/packer/start/packer.nvim"
+local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   packer_bootstrap = vim.fn.system({
@@ -133,18 +133,83 @@ return require("packer").startup(function(use)
     end
   })
 
+  -- Autocomplete
+  use({
+    "hrsh7th/nvim-cmp",
+    requires = {
+      {"hrsh7th/cmp-nvim-lsp"},
+      {"hrsh7th/cmp-buffer"},
+      {"hrsh7th/cmp-path"},
+      {"hrsh7th/cmp-cmdline"},
+      {"hrsh7th/cmp-vsnip"},
+      {"hrsh7th/vim-vsnip"}
+    },
+    config = function()
+      local cmp = require("cmp")
+      cmp.setup({
+        snippet = {
+          expand = function(args)
+            vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+          end,
+        },
+        mapping = {
+          ["<TAB>"] = cmp.mapping.select_next_item(),
+          ["<S-TAB>"] = cmp.mapping.select_prev_item(),
+          ["<CR>"] = cmp.mapping.confirm({select = true})
+        },
+        sources = cmp.config.sources({
+          { name = 'nvim_lsp' },
+          { name = 'vsnip' }, -- For vsnip users.
+        }, {
+          { name = 'buffer' },
+        })
+      })
+    end
+  })
+
   -- Language Server Protocol
   use({
     "neovim/nvim-lspconfig", 
     config = function()
+      local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
       local lsp = require("lspconfig")
       local opts = {noremap = true, silent = true}
 
-      lsp.clangd.setup({}) -- brew install clangd
-      lsp.gopls.setup({})  -- brew install gopls
-      lsp.cmake.setup({})  -- pip3 install cmake-language-server
-      lsp.pylsp.setup({})  -- pip3 install python-lsp-server autopep8
-      lsp.bashls.setup({}) -- npm i -g bash-language-server
+      lsp.clangd.setup({capabilities = capabilities}) -- brew install clangd
+      lsp.gopls.setup({capabilities = capabilities})  -- brew install gopls
+      lsp.cmake.setup({capabilities = capabilities})  -- pip3 install cmake-language-server
+      lsp.pylsp.setup({capabilities = capabilities})  -- pip3 install python-lsp-server autopep8
+      lsp.bashls.setup({capabilities = capabilities}) -- npm i -g bash-language-server
+
+      local runtime_path = vim.split(package.path, ';')
+
+      table.insert(runtime_path, "lua/?.lua")
+      table.insert(runtime_path, "lua/?/init.lua")
+
+      require'lspconfig'.sumneko_lua.setup {
+        settings = {
+          Lua = {
+            runtime = {
+              -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+              version = 'LuaJIT',
+              -- Setup your lua path
+              path = runtime_path,
+            },
+            diagnostics = {
+              -- Get the language server to recognize the `vim` global
+              globals = {'vim'},
+            },
+            workspace = {
+              -- Make the server aware of Neovim runtime files
+              library = vim.api.nvim_get_runtime_file("", true),
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+              enable = false,
+            },
+          },
+        },
+      }
 
       vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
       vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
@@ -163,36 +228,6 @@ return require("packer").startup(function(use)
       vim.api.nvim_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
       vim.api.nvim_set_keymap("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
       vim.api.nvim_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-    end
-  })
-
-  -- Autocomplete
-  use({
-    "hrsh7th/nvim-cmp",
-    requires = {
-      {"hrsh7th/cmp-nvim-lsp"},
-      {"hrsh7th/cmp-buffer"},
-      {"hrsh7th/cmp-path"},
-      {"hrsh7th/cmp-cmdline"},
-    },
-    config = function()
-      local cmp = require("cmp")
-      cmp.setup({
-        snippet = {
-          expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
-          end
-        },
-        mapping = {
-          ["<TAB>"] = cmp.mapping.select_next_item(),
-          ["<S-TAB>"] = cmp.mapping.select_prev_item(),
-          ["<CR>"] = cmp.mapping.confirm({select = true})
-        },
-        sources = cmp.config.sources({
-          {name = "nvim_lsp"},
-          {name = "vsnip"}
-        })
-      })
     end
   })
 
