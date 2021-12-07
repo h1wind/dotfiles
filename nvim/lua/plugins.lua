@@ -179,13 +179,13 @@ return require("packer").startup(function(use)
       lsp.gopls.setup({capabilities = capabilities})  -- brew install gopls
       lsp.cmake.setup({capabilities = capabilities})  -- pip3 install cmake-language-server
       lsp.pylsp.setup({capabilities = capabilities})  -- pip3 install python-lsp-server autopep8
-      lsp.bashls.setup({capabilities = capabilities}) -- npm i -g bash-language-server
 
       local runtime_path = vim.split(package.path, ';')
 
       table.insert(runtime_path, "lua/?.lua")
       table.insert(runtime_path, "lua/?/init.lua")
 
+      -- brew install lua-language-server
       require'lspconfig'.sumneko_lua.setup {
         settings = {
           Lua = {
@@ -295,7 +295,7 @@ return require("packer").startup(function(use)
   })
 
   -- Class outline
-  -- brew install universal-ctags
+  -- brew install ctags
   use({
     "preservim/tagbar",
     config = function()
