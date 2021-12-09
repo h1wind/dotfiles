@@ -68,20 +68,39 @@ return require("packer").startup(function(use)
 
   -- theme
   use({
-    "sainnhe/everforest",
+    "sainnhe/gruvbox-material",
     config = function()
-      vim.cmd("colorscheme everforest")
+      vim.cmd("colorscheme gruvbox-material")
+    end
+  })
+
+  -- Status line
+  use({
+    "nvim-lualine/lualine.nvim",
+    requires = {
+      {"kyazdani42/nvim-web-devicons"}
+    },
+    config = function()
+      require("lualine").setup({
+        options = {
+          theme = "gruvbox-material",
+          component_separators = { left = '', right = ''},
+          section_separators = { left = '', right = ''},
+        },
+      })
     end
   })
 
   -- File tree
   use({
     "kyazdani42/nvim-tree.lua",
+    requires = {
+      {"kyazdani42/nvim-web-devicons"}
+    },
     config = function()
       require("nvim-tree").setup({
         view = {
           width = 40,
-          hide_root_folder = true
         }
       })
 
@@ -134,10 +153,10 @@ return require("packer").startup(function(use)
           ["<CR>"] = cmp.mapping.confirm({select = true})
         },
         sources = cmp.config.sources({
-          { name = 'nvim_lsp' },
-          { name = 'vsnip' }, -- For vsnip users.
+          {name = "nvim_lsp"},
+          {name = "vsnip"}, -- For vsnip users.
         }, {
-          { name = 'buffer' },
+          {name = "buffer"},
         })
       })
     end
@@ -253,6 +272,19 @@ return require("packer").startup(function(use)
       vim.api.nvim_set_keymap("n", "<F3>", "<cmd>SymbolsOutline<CR>", {})
     end
   })
+
+  -- Git Status
+  use {
+    "lewis6991/gitsigns.nvim",
+    requires = {
+      "nvim-lua/plenary.nvim"
+    },
+    config = function()
+      require("gitsigns").setup({
+        signcolumn = false,
+      })
+    end
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
