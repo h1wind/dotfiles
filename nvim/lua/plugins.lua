@@ -285,6 +285,7 @@ return require("packer").startup(function(use)
       require("gitsigns").setup({
         signcolumn = false,
       })
+      vim.api.nvim_set_keymap("n", "<F4>", "<cmd>Gitsigns toggle_signs<CR>", {})
     end
   }
 
