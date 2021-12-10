@@ -84,8 +84,8 @@ return require("packer").startup(function(use)
       require("lualine").setup({
         options = {
           theme = "gruvbox-material",
-          component_separators = { left = '', right = ''},
-          section_separators = { left = '', right = ''},
+          component_separators = {left = "", right = ""},
+          section_separators = {left = "", right = ""},
         },
       })
     end
@@ -168,7 +168,7 @@ return require("packer").startup(function(use)
   use({
     "neovim/nvim-lspconfig", 
     config = function()
-      local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+      local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
       local lsp = require("lspconfig")
       local opts = {noremap = true, silent = true}
 
