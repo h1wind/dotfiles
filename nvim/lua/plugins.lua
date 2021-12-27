@@ -1,8 +1,8 @@
 -- MIT License Copyright (c) 2021, h1zzz
 
 function goimports(timeout_ms)
-  local context = { only = { "source.organizeImports" } }
-  vim.validate { context = { context, "t", true } }
+  local context = {only = {"source.organizeImports"}}
+  vim.validate {context = {context, "t", true}}
 
   local params = vim.lsp.util.make_range_params()
   params.context = context
@@ -74,12 +74,13 @@ return require("packer").startup(function(use)
     end
   })
 
+  use ({
+    "kyazdani42/nvim-web-devicons"
+  })
+
   -- Status line
   use({
     "nvim-lualine/lualine.nvim",
-    requires = {
-      {"kyazdani42/nvim-web-devicons"}
-    },
     config = function()
       require("lualine").setup({
         options = {
@@ -94,16 +95,12 @@ return require("packer").startup(function(use)
   -- File tree
   use({
     "kyazdani42/nvim-tree.lua",
-    requires = {
-      {"kyazdani42/nvim-web-devicons"}
-    },
     config = function()
       require("nvim-tree").setup({
         view = {
           width = 40,
         }
       })
-
       vim.api.nvim_set_keymap("n", "<F2>", "<cmd>NvimTreeToggle<CR>", {})
     end
   })
