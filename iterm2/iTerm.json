@@ -1,11 +1,5 @@
 {
-  "Ansi 5 Color" : {
-    "Red Component" : 0.69803921568627447,
-    "Color Space" : "sRGB",
-    "Blue Component" : 0.70196078431372544,
-    "Alpha Component" : 1,
-    "Green Component" : 0
-  },
+  "Set Local Environment Vars" : true,
   "Working Directory" : "\/Users\/h1zzz",
   "Prompt Before Closing 2" : 2,
   "Selected Text Color" : {
@@ -63,7 +57,7 @@
     "slogin"
   ],
   "Scrollback With Status Bar" : true,
-  "Scrollback Lines" : 10000,
+  "Scrollback Lines" : 0,
   "Scrollback in Alternate Screen" : false,
   "Draw Powerline Glyphs" : false,
   "Hide After Opening" : false,
@@ -103,7 +97,7 @@
     "Green Component" : 0
   },
   "Use Cursor Guide" : false,
-  "Unlimited Scrollback" : false,
+  "Unlimited Scrollback" : true,
   "Allow Title Setting" : false,
   "Allow modifyOtherKeys" : false,
   "Custom Command" : "No",
@@ -370,6 +364,12 @@
   "Columns" : 110,
   "Visual Bell" : false,
   "Custom Directory" : "Recycle",
-  "Thin Strokes" : 0,
-  "Set Local Environment Vars" : true
+  "Ansi 5 Color" : {
+    "Red Component" : 0.69803921568627447,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.70196078431372544,
+    "Alpha Component" : 1,
+    "Green Component" : 0
+  },
+  "Thin Strokes" : 0
 }
