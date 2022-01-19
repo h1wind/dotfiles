@@ -74,7 +74,7 @@ return require("packer").startup(function(use)
     end
   })
 
-  use ({
+  use({
     "kyazdani42/nvim-web-devicons"
   })
 

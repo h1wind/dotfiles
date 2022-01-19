@@ -2,6 +2,7 @@
 
 ---
 Language: Cpp
+BasedOnStyle: LLVM
 AlignEscapedNewlines: Left
 AllowShortBlocksOnASingleLine: Empty
 AllowShortFunctionsOnASingleLine: Empty
