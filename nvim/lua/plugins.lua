@@ -97,9 +97,10 @@ return require("packer").startup(function(use)
     "kyazdani42/nvim-tree.lua",
     config = function()
       require("nvim-tree").setup({
+        hijack_cursor = true,
         view = {
           width = 40,
-        }
+        },
       })
       vim.api.nvim_set_keymap("n", "<F2>", "<cmd>NvimTreeToggle<CR>", {})
     end
@@ -173,6 +174,7 @@ return require("packer").startup(function(use)
       lsp.gopls.setup({capabilities = capabilities})  -- brew install gopls
       lsp.cmake.setup({capabilities = capabilities})  -- pip3 install cmake-language-server
       lsp.pylsp.setup({capabilities = capabilities})  -- pip3 install python-lsp-server autopep8
+      lsp.tsserver.setup({}) -- npm install -g typescript typescript-language-server
 
       vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
       vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)

@@ -35,8 +35,8 @@ vim.cmd("filetype on")
 vim.cmd("filetype plugin on")
 vim.cmd("filetype indent on")
 
-vim.cmd("autocmd FileType c,cpp,cmake,java,python setlocal et ts=4 sw=4")
-vim.cmd("autocmd FileType lua,shell,vim,json,yaml,js,html setlocal et ts=2 sw=2")
+vim.cmd("autocmd FileType c,cpp,cmake,java,python,markdown setlocal et ts=4 sw=4")
+vim.cmd("autocmd FileType javascript,lua,shell,vim,json,yaml,html setlocal et ts=2 sw=2")
 vim.cmd("autocmd FileType go setlocal ts=4 sw=4")
 vim.cmd("autocmd BufNewFile,BufRead *.h set filetype=c")
 
