@@ -174,7 +174,8 @@ return require("packer").startup(function(use)
       lsp.gopls.setup({capabilities = capabilities})  -- brew install gopls
       lsp.cmake.setup({capabilities = capabilities})  -- pip3 install cmake-language-server
       lsp.pylsp.setup({capabilities = capabilities})  -- pip3 install python-lsp-server autopep8
-      lsp.tsserver.setup({}) -- npm install -g typescript typescript-language-server
+      lsp.tsserver.setup({capabilities = capabilities}) -- npm install -g typescript typescript-language-server
+      lsp.html.setup({capabilities = capabilities}) -- npm i -g vscode-langservers-extracted
 
       vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
       vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
