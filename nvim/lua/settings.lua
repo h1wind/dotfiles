@@ -35,9 +35,24 @@ vim.cmd("filetype on")
 vim.cmd("filetype plugin on")
 vim.cmd("filetype indent on")
 
-vim.cmd("autocmd FileType c,cpp,cmake,java,python,markdown setlocal et ts=4 sw=4")
-vim.cmd("autocmd FileType javascript,lua,shell,vim,json,yaml,html setlocal et ts=2 sw=2")
-vim.cmd("autocmd FileType go setlocal ts=4 sw=4")
+function set_indent(fts, n, et)
+  for i, ft in pairs(fts) do
+    local cmd = "autocmd FileType " .. ft .. " setlocal" .. " ts=" .. n .. " sw=" .. n
+    if et then
+      cmd = cmd .. " et"
+    end
+    vim.cmd(cmd)
+  end
+end
+
+local space_4 = {"c", "cpp", "cmake", "java", "python", "markdown"}
+local space_2 = {"vim", "json", "yaml", "shell", "lua", "html", "javascript", "css"}
+local table_4 = {"go"}
+
+set_indent(space_4, 4, true)
+set_indent(space_2, 2, true)
+set_indent(table_4, 4, false)
+
 vim.cmd("autocmd BufNewFile,BufRead *.h set filetype=c")
 
 vim.cmd([[
