@@ -126,6 +126,18 @@ return require("packer").startup(function(use)
     end
   })
 
+  use({
+    "ray-x/lsp_signature.nvim",
+    config = function()
+      require("lsp_signature").setup({
+        hint_prefix = "",
+        handler_opts = {
+          border = "none" -- double, rounded, single, shadow, none
+        },
+      })
+    end
+  })
+
   -- Autocomplete
   use({
     "hrsh7th/nvim-cmp",
@@ -136,7 +148,6 @@ return require("packer").startup(function(use)
       {"hrsh7th/cmp-cmdline"},
       {"hrsh7th/cmp-vsnip"},
       {"hrsh7th/vim-vsnip"},
-      {"hrsh7th/cmp-nvim-lsp-signature-help"},
     },
     config = function()
       local cmp = require("cmp")
@@ -154,7 +165,6 @@ return require("packer").startup(function(use)
         sources = cmp.config.sources({
           {name = "nvim_lsp"},
           {name = "vsnip"}, -- For vsnip users.
-          {name = "nvim_lsp_signature_help"},
         }, {
           {name = "buffer"},
         })
@@ -170,13 +180,13 @@ return require("packer").startup(function(use)
       local lsp = require("lspconfig")
       local opts = {noremap = true, silent = true}
 
-      lsp.clangd.setup({capabilities = capabilities}) -- brew install clangd
-      lsp.gopls.setup({capabilities = capabilities})  -- brew install gopls
-      lsp.cmake.setup({capabilities = capabilities})  -- pip3 install cmake-language-server
-      lsp.pylsp.setup({capabilities = capabilities})  -- pip3 install python-lsp-server autopep8
+      lsp.clangd.setup({capabilities = capabilities})   -- brew install clangd
+      lsp.gopls.setup({capabilities = capabilities})    -- brew install gopls
+      lsp.cmake.setup({capabilities = capabilities})    -- pip3 install cmake-language-server
+      lsp.pylsp.setup({capabilities = capabilities})    -- pip3 install python-lsp-server autopep8
       lsp.tsserver.setup({capabilities = capabilities}) -- npm install -g typescript typescript-language-server
-      lsp.html.setup({capabilities = capabilities}) -- npm i -g vscode-langservers-extracted
-      lsp.cssls.setup({capabilities = capabilities}) -- npm i -g vscode-langservers-extracted
+      lsp.html.setup({capabilities = capabilities})     -- npm i -g vscode-langservers-extracted
+      lsp.cssls.setup({capabilities = capabilities})    -- npm i -g vscode-langservers-extracted
 
       vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
       vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
