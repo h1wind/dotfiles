@@ -1,0 +1,8 @@
+#!name=Allow LAN
+#!desc=Switch to listening on 0.0.0.0 address
+#!system=mac
+
+[General]
+socks5-listen = 0.0.0.0:6153
+http-listen = 0.0.0.0:6152
+
