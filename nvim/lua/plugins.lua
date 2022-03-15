@@ -148,10 +148,16 @@ return require("packer").startup(function(use)
       {"hrsh7th/cmp-cmdline"},
       {"hrsh7th/cmp-vsnip"},
       {"hrsh7th/vim-vsnip"},
+      {"onsails/lspkind-nvim"},
+      -- {"hrsh7th/cmp-nvim-lsp-signature-help"},
     },
     config = function()
+      local lspkind = require('lspkind')
       local cmp = require("cmp")
       cmp.setup({
+        formatting = {
+          format = lspkind.cmp_format(),
+        },
         snippet = {
           expand = function(args)
             vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
@@ -165,6 +171,7 @@ return require("packer").startup(function(use)
         sources = cmp.config.sources({
           {name = "nvim_lsp"},
           {name = "vsnip"}, -- For vsnip users.
+          -- {name = 'nvim_lsp_signature_help'},
         }, {
           {name = "buffer"},
         })
