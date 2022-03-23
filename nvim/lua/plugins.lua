@@ -101,6 +101,7 @@ return require("packer").startup(function(use)
         view = {
           width = 40,
         },
+        open_on_tab = true,
       })
       vim.api.nvim_set_keymap("n", "<F2>", "<cmd>NvimTreeToggle<CR>", {})
     end
@@ -294,7 +295,7 @@ return require("packer").startup(function(use)
   })
 
   -- Git Status
-  use {
+  use({
     "lewis6991/gitsigns.nvim",
     requires = {
       "nvim-lua/plenary.nvim"
@@ -305,7 +306,7 @@ return require("packer").startup(function(use)
       })
       vim.api.nvim_set_keymap("n", "<F4>", "<cmd>Gitsigns toggle_signs<CR>", {})
     end
-  }
+  })
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
