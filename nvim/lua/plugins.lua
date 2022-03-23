@@ -101,7 +101,6 @@ return require("packer").startup(function(use)
         view = {
           width = 40,
         },
-        open_on_tab = true,
       })
       vim.api.nvim_set_keymap("n", "<F2>", "<cmd>NvimTreeToggle<CR>", {})
     end
