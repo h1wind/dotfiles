@@ -4,5 +4,11 @@ BasedOnStyle: LLVM
 IndentWidth: 8
 UseTab: Always
 AllowShortIfStatementsOnASingleLine: false
+AlignEscapedNewlines: Left
+AllowShortBlocksOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: Empty
+AlwaysBreakTemplateDeclarations: Yes
+ColumnLimit: 80
+AccessModifierOffset: -8
 IndentCaseLabels: false
 SortIncludes: Never
