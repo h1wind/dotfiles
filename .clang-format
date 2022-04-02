@@ -11,4 +11,4 @@ AlwaysBreakTemplateDeclarations: Yes
 ColumnLimit: 80
 AccessModifierOffset: -8
 IndentCaseLabels: false
-SortIncludes: Never
+SortIncludes: false
