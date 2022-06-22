@@ -40,7 +40,7 @@ local function init_indent()
     {
       et = true,
       n = 4,
-      fts = {"sh", "java", "python", "markdown"},
+      fts = {"c", "cpp", "sh", "java", "python", "markdown"},
     }, {
       et = true,
       n = 2,
@@ -48,7 +48,7 @@ local function init_indent()
     }, {
       et = false,
       n = 4,
-      fts = {"c", "cpp", "go", "make"},
+      fts = {"go", "make"},
     },
   }
 

@@ -1,8 +1,10 @@
 # MIT License Copyright (c) 2022, h1zzz
 
+Language:        Cpp
 BasedOnStyle: LLVM
 IndentWidth: 8
 UseTab: Always
+BreakBeforeBraces: Linux
 AllowShortIfStatementsOnASingleLine: false
 AlignEscapedNewlines: Left
 AllowShortBlocksOnASingleLine: Empty
@@ -12,3 +14,5 @@ ColumnLimit: 80
 AccessModifierOffset: -8
 IndentCaseLabels: false
 SortIncludes: false
+...
+
