@@ -1,3 +1,5 @@
+# MIT License Copyright (c) 2022, h1zzz
+
 BasedOnStyle: LLVM
 IndentWidth: 8
 UseTab: Always
@@ -5,5 +7,6 @@ BreakBeforeBraces: Linux
 AllowShortIfStatementsOnASingleLine: false
 IndentCaseLabels: false
 AlwaysBreakBeforeMultilineStrings: true
-AllowShortBlocksOnASingleLine: false
 ContinuationIndentWidth: 8
+AllowShortBlocksOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: Empty
