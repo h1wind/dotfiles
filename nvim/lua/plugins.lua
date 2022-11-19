@@ -156,7 +156,7 @@ return require("packer").startup(function(use)
   use({
     "neovim/nvim-lspconfig",
     config = function()
-      local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+      local capabilities = require('cmp_nvim_lsp').default_capabilities()
       local lsp = require("lspconfig")
       local opts = {noremap = true, silent = true}
 
