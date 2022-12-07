@@ -53,9 +53,10 @@ return require("packer").startup(function(use)
 
   -- theme
   use({
-    "sainnhe/gruvbox-material",
+    "https://gitlab.com/__tpb/monokai-pro.nvim",
     config = function()
-      vim.cmd("colorscheme gruvbox-material")
+      vim.cmd([[colorscheme monokaipro]])
+      vim.g.monokaipro_filter = "spectrum"
     end
   })
 
@@ -69,7 +70,8 @@ return require("packer").startup(function(use)
     config = function()
       require("lualine").setup({
         options = {
-          theme = "gruvbox-material",
+          -- theme = "gruvbox-material",
+          theme = "monokaipro",
           component_separators = {left = "", right = ""},
           section_separators = {left = "", right = ""},
         },
@@ -163,7 +165,7 @@ return require("packer").startup(function(use)
       lsp.clangd.setup({capabilities = capabilities})      -- brew install clangd
       lsp.gopls.setup({capabilities = capabilities})       -- brew install gopls
       lsp.cmake.setup({capabilities = capabilities})       -- pip3 install cmake-language-server
-      lsp.pylsp.setup({capabilities = capabilities})       -- pip3 install python-lsp-server autopep8
+      lsp.pylsp.setup({capabilities = capabilities})       -- pip3 install python-lsp-serverautopep8
 
       vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
       vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
@@ -174,14 +176,14 @@ return require("packer").startup(function(use)
       vim.api.nvim_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
       vim.api.nvim_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
       vim.api.nvim_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-      vim.api.nvim_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+      vim.api.nvim_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>",opts)
       vim.api.nvim_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
       vim.api.nvim_set_keymap("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
       vim.api.nvim_set_keymap("n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
       vim.api.nvim_set_keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
       vim.api.nvim_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
       vim.api.nvim_set_keymap("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-      vim.api.nvim_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", opts)
+      vim.api.nvim_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.format({async = true})<CR>", opts)
     end
   })
 
