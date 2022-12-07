@@ -165,7 +165,7 @@ return require("packer").startup(function(use)
       lsp.clangd.setup({capabilities = capabilities})      -- brew install clangd
       lsp.gopls.setup({capabilities = capabilities})       -- brew install gopls
       lsp.cmake.setup({capabilities = capabilities})       -- pip3 install cmake-language-server
-      lsp.pylsp.setup({capabilities = capabilities})       -- pip3 install python-lsp-serverautopep8
+      lsp.pylsp.setup({capabilities = capabilities})       -- pip3 install python-lsp-server autopep8
 
       vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
       vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
@@ -176,7 +176,7 @@ return require("packer").startup(function(use)
       vim.api.nvim_set_keymap("n", "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
       vim.api.nvim_set_keymap("n", "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
       vim.api.nvim_set_keymap("n", "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-      vim.api.nvim_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>",opts)
+      vim.api.nvim_set_keymap("n", "<space>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
       vim.api.nvim_set_keymap("n", "<space>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
       vim.api.nvim_set_keymap("n", "<space>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
       vim.api.nvim_set_keymap("n", "<space>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
