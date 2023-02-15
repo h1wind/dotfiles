@@ -53,10 +53,12 @@ return require("packer").startup(function(use)
 
   -- theme
   use({
-    "https://gitlab.com/__tpb/monokai-pro.nvim",
+    "loctvl842/monokai-pro.nvim",
     config = function()
-      vim.cmd([[colorscheme monokaipro]])
-      vim.g.monokaipro_filter = "spectrum"
+      require("monokai-pro").setup({
+        filter = "spectrum",
+      })
+      vim.cmd([[colorscheme monokai-pro]])
     end
   })
 
