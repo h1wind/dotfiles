@@ -1,4 +1,4 @@
--- MIT License Copyright (c) 2021, h1zzz
+-- MIT License Copyright (c) 2021, h1wind <h1wind@proton.me>
 
 function OrgImports(wait_ms)
   local params = vim.lsp.util.make_range_params()
@@ -53,12 +53,9 @@ return require("packer").startup(function(use)
 
   -- theme
   use({
-    "loctvl842/monokai-pro.nvim",
+    "sainnhe/gruvbox-material",
     config = function()
-      require("monokai-pro").setup({
-        filter = "spectrum",
-      })
-      vim.cmd([[colorscheme monokai-pro]])
+      vim.cmd("colorscheme gruvbox-material")
     end
   })
 
@@ -72,8 +69,7 @@ return require("packer").startup(function(use)
     config = function()
       require("lualine").setup({
         options = {
-          -- theme = "gruvbox-material",
-          theme = "monokaipro",
+          theme = "gruvbox-material",
           component_separators = {left = "", right = ""},
           section_separators = {left = "", right = ""},
         },
@@ -250,6 +246,7 @@ return require("packer").startup(function(use)
       vim.g.indent_blankline_show_trailing_blankline_indent = false
     end
   })
+
 
   -- Class outline
   use({
