@@ -1,9 +1,10 @@
--- MIT License Copyright (c) 2021, h1zzz
+-- MIT License Copyright (c) 2021, h1wind
 
 vim.opt.guicursor = ""
 vim.opt.fileformat = "unix"
 vim.opt.syntax = "on"
 vim.opt.laststatus = 2
+vim.opt.mouse = ""
 vim.opt.encoding = "utf-8"
 vim.opt.hidden = true
 vim.opt.cursorline = true
@@ -26,25 +27,21 @@ vim.opt.ignorecase = true
 vim.opt.endofline = true
 vim.opt.background = "dark"
 vim.opt.showmode = true
+-- vim.opt.sw=4
+-- vim.opt.ts=4
 
 vim.g.mapleader = ","
-
-vim.cmd("nohlsearch")
-
-vim.cmd("filetype on")
-vim.cmd("filetype plugin on")
-vim.cmd("filetype indent on")
 
 local function init_indent()
   local indents = {
     {
       et = true,
       n = 4,
-      fts = {"c", "cpp", "sh", "java", "python", "markdown"},
+      fts = {"java", "python", "markdown"},
     }, {
       et = true,
       n = 2,
-      fts = {"vim", "json", "cmake", "yaml", "lua", "html", "javascript", "css"},
+      fts = {"sh", "c", "cpp", "vim", "json", "cmake", "yaml", "lua", "html", "javascript", "css"},
     }, {
       et = false,
       n = 4,
@@ -65,6 +62,10 @@ end
 
 init_indent()
 
+vim.cmd("nohlsearch")
+vim.cmd("filetype on")
+vim.cmd("filetype plugin on")
+vim.cmd("filetype indent on")
 vim.cmd("autocmd BufNewFile,BufRead *.h set filetype=c")
 
 vim.cmd([[

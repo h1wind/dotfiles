@@ -1,4 +1,2 @@
-
 require("plugins")
 require("settings")
-

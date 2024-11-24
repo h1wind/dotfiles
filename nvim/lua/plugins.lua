@@ -52,12 +52,12 @@ return require("packer").startup(function(use)
   use("wbthomason/packer.nvim")
 
   -- theme
-  use({
-    "sainnhe/gruvbox-material",
+  use {
+    "loctvl842/monokai-pro.nvim",
     config = function()
-      vim.cmd("colorscheme gruvbox-material")
+      vim.cmd("colorscheme monokai-pro-spectrum")
     end
-  })
+  }
 
   use({
     "kyazdani42/nvim-web-devicons"
