@@ -61,7 +61,6 @@ set encoding=utf-8
 set hidden
 set backspace=2
 set cul
-set rnu
 set nu
 set autoread
 set completeopt=preview,menu
