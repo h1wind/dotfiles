@@ -1,5 +1,3 @@
-" Copyright (c) 2025, hi <hi@nosec.me>. All rights reserved.
-"
 " Install
 "
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
