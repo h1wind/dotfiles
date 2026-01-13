@@ -78,4 +78,6 @@ set pumwidth=20
 set updatetime=300
 set ignorecase
 set endofline
-
+set ts=4
+set sw=4
+set et
